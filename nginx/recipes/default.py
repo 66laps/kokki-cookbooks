@@ -33,4 +33,4 @@ Service("nginx",
     supports_restart = True,
     supports_reload = True,
     action = "start",
-    subscribes = [("reload", Resource.lookup("File", "nginx.conf"))])
+    subscribes = [("reload", env.resources["File"]["nginx.conf"])])

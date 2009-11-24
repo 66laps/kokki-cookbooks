@@ -10,4 +10,4 @@ File("/etc/exim4/update-exim4.conf.conf",
     group = "root",
     mode = 0644,
     content = Template("exim4/templates/update-exim4.conf.conf.j2"),
-    notifies = [("restart", Resource.lookup("Service", "exim4"))])
+    notifies = [("restart", env.resources["Service"]["exim4"])])

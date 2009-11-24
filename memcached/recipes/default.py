@@ -17,4 +17,4 @@ File("/etc/memcached.conf",
     owner = "root",
     group = "root",
     mode = 0644,
-    notifies = [("restart", Resource.lookup("Service", "memcached"), True)])
+    notifies = [("restart", env.resources["Service"]["memcached"], True)])

@@ -11,4 +11,4 @@ File("munin-node.conf",
     content = Template("munin/templates/munin-node.conf.j2"))
 
 Service("munin-node",
-    subscribes = [("restart", Resource.lookup("File", "munin-node.conf"))])
+    subscribes = [("restart", env.resources["File"]["munin-node.conf"])])

@@ -82,7 +82,7 @@ File("apache2.conf",
     owner = "root",
     group = "root",
     mode = 0644,
-    notifies = [("restart", Resource.lookup("Service", "apache2"))])
+    notifies = [("restart", env.resources["Service"]["apache2"])])
 
 File("apache2-security",
     path = "%s/conf.d/security" % env['apache']['dir'],
@@ -90,7 +90,7 @@ File("apache2-security",
     owner = "root",
     group = "root",
     mode = 0644,
-    notifies = [("restart", Resource.lookup("Service", "apache2"))])
+    notifies = [("restart", env.resources["Service"]["apache2"])])
 
 File("apache2-charset",
     path = "%s/conf.d/charset" % env['apache']['dir'],
@@ -98,7 +98,7 @@ File("apache2-charset",
     owner = "root",
     group = "root",
     mode = 0644,
-    notifies = [("restart", Resource.lookup("Service", "apache2"))])
+    notifies = [("restart", env.resources["Service"]["apache2"])])
  
 File("apache2-ports.conf",
     path = "%s/ports.conf" % env['apache']['dir'],
@@ -106,7 +106,7 @@ File("apache2-ports.conf",
     owner = "root",
     group = "root",
     mode = 0644,
-    notifies = [("restart", Resource.lookup("Service", "apache2"))])
+    notifies = [("restart", env.resources["Service"]["apache2"])])
 
 # File("apache2-default",
 #     path = "%s/sites-available/default" % env['apache']['dir'],
@@ -114,7 +114,7 @@ File("apache2-ports.conf",
 #     owner = "root",
 #     group = "root",
 #     mode = 0644,
-#     noifies = [("restart", Resource.lookup("Service", "apache2"))])
+#     noifies = [("restart", env.resources["Service"]["apache2"])])
  
 File("apache2-default-000",
     path = "%s/sites-enabled/000-default" % env['apache']['dir'],

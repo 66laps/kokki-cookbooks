@@ -25,4 +25,4 @@ Directory("/var/monit",
 
 Service("monit",
     supports_restart = True,
-    subscribes = [('restart', Resource.lookup('File', "%s/monitrc" % env['monit']['config_path']))])
+    subscribes = [('restart', env.resources['File']["%s/monitrc" % env['monit']['config_path']])])
