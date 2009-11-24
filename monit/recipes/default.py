@@ -7,11 +7,11 @@ File("%s/monitrc" % env['monit']['config_path'],
     owner = "root",
     group = "root",
     mode = 0700,
-    content = Template("monit/templates/monitrc.j2"))
+    content = Template("monit/monitrc.j2"))
 
 if env.system.platform == "ubuntu":
     File("/etc/default/monit",
-        content = Template("monit/templates/default.j2"))
+        content = Template("monit/default.j2"))
 
 Directory("%s/monit.d" % env['monit']['config_path'],
     owner = "root",

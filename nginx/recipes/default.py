@@ -10,20 +10,20 @@ Directory(env['nginx']['log_dir'],
 
 for nxscript in ('nxensite', 'nxdissite'):
     File("/usr/sbin/%s" % nxscript,
-        content = Template("nginx/templates/%s.j2" % nxscript),
+        content = Template("nginx/%s.j2" % nxscript),
         mode = 0755,
         owner = "root",
         group = "root")
 
 File("nginx.conf",
     path = "%s/nginx.conf" % env['nginx']['dir'],
-    content = Template("nginx/templates/nginx.conf.j2"),
+    content = Template("nginx/nginx.conf.j2"),
     owner = "root",
     group = "root",
     mode = 0644)
 
 File("%s/sites-available/default" % env['nginx']['dir'],
-    content = Template("nginx/templates/default-site.j2"),
+    content = Template("nginx/default-site.j2"),
     owner = "root",
     group = "root",
     mode = 0644)

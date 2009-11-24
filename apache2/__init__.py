@@ -4,7 +4,7 @@ from pluto import *
 
 def apache2_conf(name):
     File("%s/mods-available/%s.conf" % (env['apache']['dir'], name),
-        content = Template('apache2/templates/mods/%s.conf.j2' % name),
+        content = Template('apache2/mods/%s.conf.j2' % name),
         notifies = [("restart", env.resources["Service"]["apache2"])])
 
 def apache2_module(name, enable=True, conf=False):

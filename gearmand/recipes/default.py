@@ -15,4 +15,4 @@ Directory("/var/run/gearmand",
     owner = "nobody",
     mode = 0755)
 monitrc("gearmand",
-    content = Template("gearmand/templates/monit.conf.j2"))
+    content = Template("gearmand/monit.conf.j2"))

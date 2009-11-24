@@ -7,7 +7,7 @@ Service("memcached")
 
 File("/etc/memcached.conf",
     content = Template(
-        "memcached/templates/memcached.conf.j2",
+        "memcached/memcached.conf.j2",
         variables = dict(
             memory = env['memcached']['memory'],
             user = env['memcached']['user'],
