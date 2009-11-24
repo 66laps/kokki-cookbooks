@@ -1,0 +1,10 @@
+description: "Configures monit"
+attributes:
+    "monit.alert_emails":
+        display_name: Alert emails
+        description: Emails that should receive alerts about service changes.
+        default: []
+    "monit.password":
+        dispaly_name: Password
+        description: Password for accessing web interface
+        default: m0n1t1tup

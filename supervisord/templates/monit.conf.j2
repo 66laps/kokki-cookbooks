@@ -1,0 +1,4 @@
+check process supervisord with pidfile /var/run/supervisord.pid
+	start program = "/usr/local/bin/supervisord -c /etc/supervisord.conf"
+	stop  program = "/usr/bin/killall supervisord"
+	if 5 restarts within 5 cycles then timeout

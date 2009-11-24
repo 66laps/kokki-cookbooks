@@ -1,0 +1,6 @@
+description: Installs and configures gearmand
+attributes:
+    "gearmand.user":
+        display_name: Gearmand user
+        description: User to run the gearmand procses as
+        default: nobody

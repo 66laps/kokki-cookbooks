@@ -1,0 +1,14 @@
+description: Installs memcached and provides a define to set up an instance of memcache
+attributes:
+    "memcached.memory":
+        display_name: Memcached Memory
+        description: Memory allocated for memcached instance
+        default: 64
+    "memcached.port":
+        display_name: Memcached Port
+        description: Port to use for memcached instance
+        default: "11211"
+    "memcached.user":
+        display_name: Memcached User
+        description: User to run memcached instance as
+        default: "nobody"

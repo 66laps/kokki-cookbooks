@@ -1,0 +1,15 @@
+description: Installs and configures munin and munin-node
+supports: [ubuntu,debian]
+attributes:
+    "munin.bind":
+        display_name: IP Address to bind to
+        description: IP address munin-node should bind to
+        default: "127.0.0.1"
+    "munin.port":
+        display_name: Munin node port
+        description: Port number munin-node should listen on
+        default: 4949
+    "munin.allow":
+        display_name: Allowed addresses
+        description: IP address ranges that are allowed to connect to munin-node
+        default: ["127.0.0.1/32"]
