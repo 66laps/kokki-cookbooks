@@ -24,7 +24,7 @@
 # where Full conveys the most information, and Prod the least.
 #
 #ServerTokens Minimal
-ServerTokens {{ env.attr['apache']['servertokens'] }} 
+ServerTokens {{ env['apache']['servertokens'] }} 
  
 #
 # Optionally add a line containing the server version and virtual host
@@ -35,7 +35,7 @@ ServerTokens {{ env.attr['apache']['servertokens'] }}
 # Set to one of:  On | Off | EMail
 #
 #ServerSignature Off
-ServerSignature {{ env.attr['apache']['serversignature'] }} 
+ServerSignature {{ env['apache']['serversignature'] }} 
  
 #
 # Allow TRACE method
@@ -46,4 +46,4 @@ ServerSignature {{ env.attr['apache']['serversignature'] }}
 # Set to one of:  On | Off | extended
 #
 #TraceEnable Off
-TraceEnable {{ env.attr['apache']['traceenable'] }}
+TraceEnable {{ env['apache']['traceenable'] }}

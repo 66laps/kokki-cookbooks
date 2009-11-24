@@ -12,9 +12,9 @@
 # We include the /icons/ alias for FancyIndexed directory listings.  If
 # you do not use FancyIndexing, you may comment this out.
 #
-Alias /icons/ "{{ env.attr['apache']['icondir'] }}"
+Alias /icons/ "{{ env['apache']['icondir'] }}"
  
-<Directory "{{ env.attr['apache']['icondir'] }}">
+<Directory "{{ env['apache']['icondir'] }}">
     Options Indexes MultiViews
     AllowOverride None
     Order allow,deny

@@ -24,7 +24,7 @@ if env.system.platform in ("centos", "redhat", "fedora", "suse"):
         supports_reload = True,
         supports_status = True)
 
-    Directory(env.attr['apache']['log_dir'], mode = 0755)
+    Directory(env['apache']['log_dir'], mode = 0755)
     File("/usr/local/bin/apache2_module_conf_generate.pl",
         mode = 0755,
         owner = "root",
@@ -32,7 +32,7 @@ if env.system.platform in ("centos", "redhat", "fedora", "suse"):
         content = LocalFile("apache2/files/apache2_module_conf_generate.pl"))
 
     for d in ('sites-available', 'sites-enabled', 'mods-available', 'mods-enabled'):
-        Directory("%s/%s" % (env.attr['apache']['dir'], d),
+        Directory("%s/%s" % (env['apache']['dir'], d),
             mode = 0755,
             owner = "root",
             group = "root")
@@ -71,13 +71,13 @@ else: # debian, ubuntu
         supports_reload = True,
         supports_status = True)
 
-Directory("%s/ssl" % env.attr['apache']['dir'],
+Directory("%s/ssl" % env['apache']['dir'],
     mode = 0755,
     owner = "root",
     group = "root")
 
 File("apache2.conf",
-    path = ("%s/conf/httpd.conf" if env.system.platform in ("centos", "redhat", "fedora") else "%s/apache2.conf") % env.attr['apache']['dir'],
+    path = ("%s/conf/httpd.conf" if env.system.platform in ("centos", "redhat", "fedora") else "%s/apache2.conf") % env['apache']['dir'],
     content = Template("apache2/templates/apache2.conf.j2"),
     owner = "root",
     group = "root",
@@ -85,7 +85,7 @@ File("apache2.conf",
     notifies = [("restart", Resource.lookup("Service", "apache2"))])
 
 File("apache2-security",
-    path = "%s/conf.d/security" % env.attr['apache']['dir'],
+    path = "%s/conf.d/security" % env['apache']['dir'],
     content = Template("apache2/templates/security.j2"),
     owner = "root",
     group = "root",
@@ -93,7 +93,7 @@ File("apache2-security",
     notifies = [("restart", Resource.lookup("Service", "apache2"))])
 
 File("apache2-charset",
-    path = "%s/conf.d/charset" % env.attr['apache']['dir'],
+    path = "%s/conf.d/charset" % env['apache']['dir'],
     content = Template("apache2/templates/charset.j2"),
     owner = "root",
     group = "root",
@@ -101,7 +101,7 @@ File("apache2-charset",
     notifies = [("restart", Resource.lookup("Service", "apache2"))])
  
 File("apache2-ports.conf",
-    path = "%s/ports.conf" % env.attr['apache']['dir'],
+    path = "%s/ports.conf" % env['apache']['dir'],
     content = Template("apache2/templates/ports.conf.j2"),
     owner = "root",
     group = "root",
@@ -109,7 +109,7 @@ File("apache2-ports.conf",
     notifies = [("restart", Resource.lookup("Service", "apache2"))])
 
 # File("apache2-default",
-#     path = "%s/sites-available/default" % env.attr['apache']['dir'],
+#     path = "%s/sites-available/default" % env['apache']['dir'],
 #     content = Template("apache2/templates/default-site.j2"),
 #     owner = "root",
 #     group = "root",
@@ -117,7 +117,7 @@ File("apache2-ports.conf",
 #     noifies = [("restart", Resource.lookup("Service", "apache2"))])
  
 File("apache2-default-000",
-    path = "%s/sites-enabled/000-default" % env.attr['apache']['dir'],
+    path = "%s/sites-enabled/000-default" % env['apache']['dir'],
     action = "delete")
 
 from apache2 import apache2_module

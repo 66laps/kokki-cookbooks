@@ -7,8 +7,5 @@ def monitrc(name, content):
         owner = "root",
         group = "root",
         mode = 0644,
-        path = "%s/monit.d/%s" % (env.attr['monit']['config_path'], name),
+        path = "%s/monit.d/%s" % (env['monit']['config_path'], name),
         notifies = [("restart", Resource.lookup("Service", "monit"))])
-
-def setup_environment(env):
-    env.attr['monit']['config_path'] = "/etc/monit"

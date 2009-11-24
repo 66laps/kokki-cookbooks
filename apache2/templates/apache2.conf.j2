@@ -1,5 +1,5 @@
  
-ServerRoot "{{ env.attr['apache']['dir'] }}"
+ServerRoot "{{ env['apache']['dir'] }}"
  
 #
 # The accept serialization lock file MUST BE STORED ON A LOCAL DISK.
@@ -25,26 +25,26 @@ PidFile logs/httpd.pid
 #
 # Timeout: The number of seconds before receives and sends time out.
 #
-Timeout {{ env.attr['apache']['timeout'] }}
+Timeout {{ env['apache']['timeout'] }}
  
 #
 # KeepAlive: Whether or not to allow persistent connections (more than
 # one request per connection). Set to "Off" to deactivate.
 #
-KeepAlive {{ env.attr['apache']['keepalive'] }}
+KeepAlive {{ env['apache']['keepalive'] }}
  
 #
 # MaxKeepAliveRequests: The maximum number of requests to allow
 # during a persistent connection. Set to 0 to allow an unlimited amount.
 # We recommend you leave this number high, for maximum performance.
 #
-MaxKeepAliveRequests {{ env.attr['apache']['keepaliverequests'] }}
+MaxKeepAliveRequests {{ env['apache']['keepaliverequests'] }}
  
 #
 # KeepAliveTimeout: Number of seconds to wait for the next request from the
 # same client on the same connection.
 #
-KeepAliveTimeout {{ env.attr['apache']['keepalivetimeout'] }}
+KeepAliveTimeout {{ env['apache']['keepalivetimeout'] }}
  
 ##
 ## Server-Pool Size Regulation (MPM specific)
@@ -57,12 +57,12 @@ KeepAliveTimeout {{ env.attr['apache']['keepalivetimeout'] }}
 # MaxClients: maximum number of server processes allowed to start
 # MaxRequestsPerChild: maximum number of requests a server process serves
 <IfModule mpm_prefork_module>
-    StartServers          {{ env.attr['apache']['prefork']['startservers'] }}
-    MinSpareServers       {{ env.attr['apache']['prefork']['minspareservers'] }}
-    MaxSpareServers       {{ env.attr['apache']['prefork']['maxspareservers'] }}
-    ServerLimit           {{ env.attr['apache']['prefork']['serverlimit'] }}
-    MaxClients            {{ env.attr['apache']['prefork']['maxclients'] }}
-    MaxRequestsPerChild   {{ env.attr['apache']['prefork']['maxrequestsperchild'] }}
+    StartServers          {{ env['apache']['prefork']['startservers'] }}
+    MinSpareServers       {{ env['apache']['prefork']['minspareservers'] }}
+    MaxSpareServers       {{ env['apache']['prefork']['maxspareservers'] }}
+    ServerLimit           {{ env['apache']['prefork']['serverlimit'] }}
+    MaxClients            {{ env['apache']['prefork']['maxclients'] }}
+    MaxRequestsPerChild   {{ env['apache']['prefork']['maxrequestsperchild'] }}
 </IfModule>
  
 # worker MPM
@@ -73,16 +73,16 @@ KeepAliveTimeout {{ env.attr['apache']['keepalivetimeout'] }}
 # ThreadsPerChild: constant number of worker threads in each server process
 # MaxRequestsPerChild: maximum number of requests a server process serves
 <IfModule mpm_worker_module>
-    StartServers          {{ env.attr['apache']['worker']['startservers'] }}
-    MaxClients            {{ env.attr['apache']['worker']['maxclients'] }}
-    MinSpareThreads       {{ env.attr['apache']['worker']['minsparethreads'] }}
-    MaxSpareThreads       {{ env.attr['apache']['worker']['maxsparethreads'] }}
-    ThreadsPerChild       {{ env.attr['apache']['worker']['threadsperchild'] }}
-    MaxRequestsPerChild   {{ env.attr['apache']['worker']['maxrequestsperchild'] }}
+    StartServers          {{ env['apache']['worker']['startservers'] }}
+    MaxClients            {{ env['apache']['worker']['maxclients'] }}
+    MinSpareThreads       {{ env['apache']['worker']['minsparethreads'] }}
+    MaxSpareThreads       {{ env['apache']['worker']['maxsparethreads'] }}
+    ThreadsPerChild       {{ env['apache']['worker']['threadsperchild'] }}
+    MaxRequestsPerChild   {{ env['apache']['worker']['maxrequestsperchild'] }}
 </IfModule>
  
-User {{ env.attr['apache']['user'] }}
-Group {{ env.attr['apache']['user'] }}
+User {{ env['apache']['user'] }}
+Group {{ env['apache']['user'] }}
  
 #
 # AccessFileName: The name of the file to look for in each directory
@@ -129,7 +129,7 @@ HostnameLookups Off
 # logged here.  If you *do* define an error logfile for a <VirtualHost>
 # container, that host's errors will be logged there and not here.
 #
-ErrorLog {{ env.attr['apache']['log_dir'] }}/error.log 
+ErrorLog {{ env['apache']['log_dir'] }}/error.log 
  
 #
 # LogLevel: Control the number of messages logged to the error_log.
@@ -139,11 +139,11 @@ ErrorLog {{ env.attr['apache']['log_dir'] }}/error.log
 LogLevel warn
  
 # Include module configuration:
-Include {{ env.attr['apache']['dir'] }}/mods-enabled/*.load
-Include {{ env.attr['apache']['dir'] }}/mods-enabled/*.conf
+Include {{ env['apache']['dir'] }}/mods-enabled/*.load
+Include {{ env['apache']['dir'] }}/mods-enabled/*.conf
  
 # Include ports listing
-Include {{ env.attr['apache']['dir'] }}/ports.conf
+Include {{ env['apache']['dir'] }}/ports.conf
  
 #
 # The following directives define some format nicknames for use with
@@ -220,7 +220,7 @@ LogFormat "%{User-agent}i" agent
  
  
 # Include generic snippets of statements
-Include {{ env.attr['apache']['dir'] }}/conf.d/
+Include {{ env['apache']['dir'] }}/conf.d/
  
 # Include the virtual host configurations:
-Include {{ env.attr['apache']['dir'] }}/sites-enabled/
+Include {{ env['apache']['dir'] }}/sites-enabled/

@@ -1,24 +1,24 @@
 set daemon 20
 set logfile syslog facility log_daemon
 
-{% if env.attr['mailserver'] %}
-set mailserver  {{ env.attr['mailserver'] }}, localhost
+{% if env['mailserver'] %}
+set mailserver  {{ env['mailserver'] }}, localhost
 {% endif %}
 
 set eventqueue
     basedir /var/monit  # set the base directory where events will be stored
     slots 100           # optionaly limit the queue size
-{% if env.attr['monit']['mail_format'] %}
-set mail-format { from: {{ env.attr['monit']['mail_format'] }} }
+{% if env['monit']['mail_format'] %}
+set mail-format { from: {{ env['monit']['mail_format'] }} }
 {% endif %}
 
-{% for email in env.attr['monit']['alert_emails'] %}
+{% for email in env['monit']['alert_emails'] %}
 set alert {{ email }}
 {% endfor %}
  
 set httpd port 2828 and
     use address localhost
     allow localhost
-    allow admin:{{ env.attr['monit']['password'] }}
+    allow admin:{{ env['monit']['password'] }}
 
-include {{ env.attr['monit']['config_path'] }}/monit.d/*
+include {{ env['monit']['config_path'] }}/monit.d/*

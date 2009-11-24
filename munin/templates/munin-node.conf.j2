@@ -28,12 +28,12 @@ ignore_file \.pod$
 # doesn't understand CIDR-style network notation.  You may repeat
 # the allow line as many times as you'd like
 
-{% for cidr in env.attr['munin']['allow'] %}
+{% for cidr in env['munin']['allow'] %}
 cidr_allow {{ cidr }}
 {% endfor %}
 
 # Which address to bind to;
-host {{ env.attr['munin']['bind'] }}
+host {{ env['munin']['bind'] }}
 
 # And which port
-port {{ env.attr['munin']['port'] }}
+port {{ env['munin']['port'] }}

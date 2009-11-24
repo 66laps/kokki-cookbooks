@@ -1,10 +1,10 @@
 server {
 	listen   80;
-	{% if env.attr['hostname'] %}
-	server_name  {{ env.attr['hostname'] }};
+	{% if env['hostname'] %}
+	server_name  {{ env['hostname'] }};
 	{% endif %}
 
-	access_log   {{ env.attr['nginx']['log_dir'] }}/localhost.access.log;
+	access_log   {{ env['nginx']['log_dir'] }}/localhost.access.log;
  
 	location / {
 		root   /var/www/nginx-default;

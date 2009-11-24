@@ -15,6 +15,3 @@ from pluto import *
 #                 file { "/etc/munin/plugins/$name":
 #                     ensure => absent,
 #                   notify  => Service["munin-node"],
-
-def setup_environment(env):
-    pass

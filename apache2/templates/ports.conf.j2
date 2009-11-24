@@ -1,5 +1,5 @@
 
-{% for port in env.attr['apache']['listen_ports'] %}
+{% for port in env['apache']['listen_ports'] %}
 # Listen {{ port }}
 # NameVirtualHost *:{{ port }}
 {% endfor %}
