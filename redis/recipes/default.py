@@ -1,7 +1,7 @@
 
 from monit import monitrc
 
-def install_package(name, url, creates):
+def install_package(name, url, creates, configure=True):
     import os
     filename = url.rsplit('/', 1)[-1]
     dirname = filename
@@ -18,7 +18,7 @@ def install_package(name, url, creates):
             "wget %(url)s\n"
             "tar -zxvf %(filename)s\n"
             "cd %(dirname)s\n"
-            "./configure && make install\n") % dict(url=url, dirname=dirname, filename=filename)
+            "%(configure)smake install\n") % dict(url=url, dirname=dirname, filename=filename, configure="./configure && " if configure else "")
     )
 
 install_package("redis",
