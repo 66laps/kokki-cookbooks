@@ -18,11 +18,6 @@ Script("install-redis",
         "cp redis-cli redis-benchmark /usr/local/bin\n") % dict(url=url, dirname=dirname, filename=filename)
     )
 
-install_package("redis",
-    configure = False,
-    creates = "/usr/local/bin/redis-server",
-    url = "http://redis.googlecode.com/files/redis-1.02.tar.gz")
-
 File("redis.conf",
     path = env.redis.configfile,
     owner = "root",
