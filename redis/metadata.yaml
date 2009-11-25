@@ -1,7 +1,11 @@
 description: Installs and configurations Redis
 attributes:
+    redis.configfile:
+        display_name: Redix config file
+        description: Path to the config file
+        default: /etc/redis.conf
     redis.port:
-        dispaly_name: Redis port
+        display_name: Redis port
         description: Accept connections on the specified port
         default: 6379
     redis.timeout:
