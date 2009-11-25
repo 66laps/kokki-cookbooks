@@ -1,4 +1,6 @@
 
+include_recipe("monit")
+
 from monit import monitrc
 
 def install_package(name, url, creates):
