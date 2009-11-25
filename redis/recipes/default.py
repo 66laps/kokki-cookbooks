@@ -1,24 +1,21 @@
 
 from monit import monitrc
 
-def install_package(name, url, creates, configure=True):
-    import os
-    filename = url.rsplit('/', 1)[-1]
-    dirname = filename
-    while dirname.rsplit('.', 1)[-1] in ('gz', 'tar', 'tgz', 'bz2'):
-        dirname = dirname.rsplit('.', 1)[0]
+version = "1.02"
+dirname = "redis-%s" % version
+filename = "%s.tar.gz" % dirname
+url = "http://redis.googlecode.com/files/%s" % filename
 
-    if not dirname:
-        raise Fail("Enable to figure out directory name of project for URL %s" % url)
-
-    Script("install-%s" % name,
-        not_if = lambda:os.path.exists(creates),
-        cwd = "/usr/local/src",
-        code = (
-            "wget %(url)s\n"
-            "tar -zxvf %(filename)s\n"
-            "cd %(dirname)s\n"
-            "%(configure)smake install\n") % dict(url=url, dirname=dirname, filename=filename, configure="./configure && " if configure else "")
+Script("install-redis",
+    not_if = lambda:os.path.exists("/usr/local/bin/redis-server"),
+    cwd = "/usr/local/src",
+    code = (
+        "wget %(url)s\n"
+        "tar -zxvf %(filename)s\n"
+        "cd %(dirname)s\n"
+        "make install\n"
+        "cp redis-server /usr/local/sbin\n"
+        "cp redis-cli redis-benchmark /usr/local/bin\n") % dict(url=url, dirname=dirname, filename=filename)
     )
 
 install_package("redis",
