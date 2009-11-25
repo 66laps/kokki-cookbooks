@@ -1,4 +1,4 @@
 check process redis with pidfile {{ env.redis.pidfile }}
-	start program = "redis-server {{ env.redis.configfile }}"
-	stop  program = "killall redis-server"
+	start program = "/usr/local/sbin/redis-server {{ env.redis.configfile }}"
+	stop  program = "/usr/bin/killall redis-server"
 	if 5 restarts within 5 cycles then timeout
