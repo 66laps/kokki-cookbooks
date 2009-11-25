@@ -1,5 +1,4 @@
 
-from pluto import *
 from monit import monitrc
 
 include_recipe("monit")
