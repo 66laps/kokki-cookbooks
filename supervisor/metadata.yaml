@@ -1,6 +1,6 @@
-description: "Configures supervisord"
+description: "Configures supervisor"
 attributes:
-    supervisord.config_path:
+    supervisor.config_path:
         display_name: Supervisor config path
         description: Config file path for supervisor
         default: /etc
