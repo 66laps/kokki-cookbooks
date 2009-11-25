@@ -7,4 +7,4 @@ attributes:
     "gearmand.pidfile":
         display_name: Gearmand pid file
         description: Path to the PID file for gearmand
-        default: /var/run/gearmand/gearmand.pi
+        default: /var/run/gearmand/gearmand.pid

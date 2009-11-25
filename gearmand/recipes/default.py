@@ -1,9 +1,8 @@
 
-import os
-from pluto import *
 from monit import monitrc
 
 def install_package(name, url, creates):
+    import os
     filename = url.rsplit('/', 1)[-1]
     dirname = filename
     while dirname.rsplit('.', 1)[-1] in ('gz', 'tar', 'tgz', 'bz2'):
