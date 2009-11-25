@@ -22,6 +22,7 @@ def install_package(name, url, creates, configure=True):
     )
 
 install_package("redis",
+    configure = False,
     creates = "/usr/local/bin/redis-server",
     url = "http://redis.googlecode.com/files/redis-1.02.tar.gz")
 
