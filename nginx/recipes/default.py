@@ -3,9 +3,9 @@ from pluto import *
 
 Package("nginx")
 
-Directory(env['nginx']['log_dir'],
+Directory(env.nginx.log_dir,
     mode = 0755,
-    owner = env['nginx']['user'],
+    owner = env.nginx.user,
     action = 'create')
 
 for nxscript in ('nxensite', 'nxdissite'):
@@ -16,13 +16,13 @@ for nxscript in ('nxensite', 'nxdissite'):
         group = "root")
 
 File("nginx.conf",
-    path = "%s/nginx.conf" % env['nginx']['dir'],
+    path = "%s/nginx.conf" % env.nginx.dir,
     content = Template("nginx/nginx.conf.j2"),
     owner = "root",
     group = "root",
     mode = 0644)
 
-File("%s/sites-available/default" % env['nginx']['dir'],
+File("%s/sites-available/default" % env.nginx.dir,
     content = Template("nginx/default-site.j2"),
     owner = "root",
     group = "root",

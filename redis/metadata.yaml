@@ -1,0 +1,42 @@
+description: Installs and configurations Redis
+attributes:
+    redis.port:
+        dispaly_name: Redis port
+        description: Accept connections on the specified port
+        default: 6379
+    redis.timeout:
+        display_name: Redis connection timeout
+        description: Close the connection after a client is idle for N seconds (0 to disable)
+        default: 300
+    redis.pidfile:
+        display_name: Redis pid file
+        description: The file which to write the pid to.
+        default: /var/run/redis.pid
+    redis.dbdir:
+        display_name: Redis database directory
+        description: For default save/load DB in/from the working directory
+        default: /var/db/redis/
+    redis.databases:
+        display_name: Redis number of databases
+        description: Set the number of databases.
+        default: 16
+    redis.logfile:
+        display_name: Redis log file
+        description: File for Redis's log
+        default: /var/log/redis.log
+    redis.loglevel:
+        display_name: Redis logging verbosity
+        description: How much Redis should log
+        default: notice
+    redis.maxmemory:
+        display_name: Redis maximum memory limit
+        description: Don't use more memory than the specified amount of bytes.
+        default:
+    redis.shareobjects:
+        display_name: Redis object sharing
+        description: If object sharing should be used.
+        default: "no"
+    redis.shareobjectspoolsize:
+        display_name: Redis shared object pool size
+        description: The size of the object pool.
+        default: 1024
