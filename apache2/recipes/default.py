@@ -1,8 +1,4 @@
 
-from pluto import *
-
-
-
 PLATFORM_CONFIGS = dict(
     centos = "httpd",
     redhat = "httpd",

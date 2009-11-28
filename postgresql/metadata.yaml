@@ -1,0 +1,26 @@
+description: Installs and configures postgresql for clients or servers
+attributes:
+    postgresql.data_dir:
+        display_name: PostgreSQL Data Directory
+        description: Location of the PostgreSQL databases
+        default: /var/lib/postgresql/8.3/main
+    postgresql.config_dir:
+        display_name: PostgreSQL Config Directory
+        description: Location of the PostgreSQL configuration files
+        default: /etc/postgresql/8.3/main
+    postgresql.pidfile:
+        display_name: PostgreSQL PID File
+        description: Path to the PostgreSQL pid file
+        default: /var/run/postgresql/8.3-main.pid
+    postgresql.listen_addresses:
+        display_name: PostgreSQL listen addresses
+        description: IP addresses PostgreSQL should listen on (* for all interfaces)
+        default: [127.0.0.1]
+    postgresql.port:
+        display_name: PostgreSQL port
+        description: Port PostgreSQL should bind to
+        default: 5432
+    postgresql.max_connections:
+        display_name: PostgreSQL max connections
+        description: Maximum numbers of connections
+        default: 100

@@ -32,6 +32,14 @@ attributes:
         display_name: Redis logging verbosity
         description: How much Redis should log
         default: notice
+    redis.master.ip:
+        display_name: Redis master IP address
+        description: This instance of redis is a slave of a master at the given IP
+        default:
+    redis.master.port:
+        display_name: Redis master port number
+        description: Port number for the master server. If slaveof.ip is specified but thit is not then defalts to redis.port.
+        default:
     redis.maxmemory:
         display_name: Redis maximum memory limit
         description: Don't use more memory than the specified amount of bytes.

@@ -1,6 +1,4 @@
 
-from pluto import *
-
 Package("munin-node")
 
 File("munin-node.conf",

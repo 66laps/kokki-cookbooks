@@ -65,7 +65,9 @@ databases {{ env.redis.databases }}
 # so for example it is possible to configure the slave to save the DB with a
 # different interval, or to listen to another port, and so on.
 
-# slaveof <masterip> <masterport>
+{% if env.redis.master.ip %}
+slaveof {{ env.redis.master.ip }} {{ env.redis.master.port or env.redis.port }}
+{% endif %}
 
 ################################## SECURITY ###################################
 
