@@ -17,4 +17,4 @@ monitrc("supervisord",
     content = Template("supervisor/monit.conf.j2"))
 
 MonitService("supervisord",
-    subscribes = ("restart", env.resources["File"]["supervisord.conf"]))
+    subscribes = [("restart", env.resources["File"]["supervisord.conf"])])
