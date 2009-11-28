@@ -2,7 +2,7 @@
 from pluto import *
 
 class SupervisorService(Service):
-    provider = "supervisor.providers.SupervisorServiceProvider"
+    provider = "SupervisorServiceProvider"
 
     supports_restart = BooleanArgument(default=True)
     supports_status = BooleanArgument(default=True)
