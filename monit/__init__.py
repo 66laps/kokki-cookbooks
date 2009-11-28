@@ -1,6 +1,8 @@
 
 from pluto import *
 
+from monit.resources import MonitService
+
 def monitrc(name, content):
     return File("monitrc-%s" % name,
         content = content,

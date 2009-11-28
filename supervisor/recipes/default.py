@@ -1,5 +1,5 @@
 
-from monit import monitrc
+from monit import monitrc, MonitService
 
 include_recipe("monit")
 
@@ -15,3 +15,6 @@ Directory("supervisor.d",
 
 monitrc("supervisord",
     content = Template("supervisor/monit.conf.j2"))
+
+MonitService("supervisord",
+    subscribes = ("restart", env.resources["File"]["supervisord.conf"]))
