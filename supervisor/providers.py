@@ -1,10 +1,13 @@
 
-__all__ = ["MuninServiceProvider"]
+__all__ = ["SupervisorServiceProvider"]
 
+import re
 import subprocess
 from pluto import *
 
-class MonitServiceProvider(Provider):
+whitespace_re = re.compile(r'\s+')
+
+class SupervisorServiceProvider(Provider):
     def action_start(self):
         if not self.status():
             self._init_cmd("start", 0)
@@ -20,21 +23,26 @@ class MonitServiceProvider(Provider):
         self.resource.updated()
 
     def status(self):
-        p = subprocess.Popen(["/usr/sbin/monit", "summary"],
+        p = subprocess.Popen([self.supervisorctl_path, "status"],
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         out = p.communicate()[0]
         for l in out.split('\n'):
             try:
-                typ, name, status = l.strip().split(' ', 2)
+                svc, status, info = whitespace_re.split(l.strip(), 2)
+                service, process_name = svc.split(':')
             except ValueError:
                 continue
-            if typ.strip() == 'Process' and name.strip() == "'%s'" % self.resource.service_name:
-                return status.strip() == "running"
-        raise Fail("Service %s not managed by monit" % self.resource.service_name)
+            if service == self.resource.service_name:
+                return status.strip() == "RUNNING"
+        raise Fail("Service %s not managed by supervisor" % self.resource.service_name)
 
     def _init_cmd(self, command, expect=None):
-        ret = subprocess.call(["/usr/sbin/monit", command, self.resource.service_name],
+        ret = subprocess.call([self.supervisorctl_path, command, self.resource.service_name],
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         if expect is not None and expect != ret:
             raise Fail("%r command %s for service %s failed" % (self, command, self.resource.service_name))
         return ret
+
+    @property
+    def supervisorctl_path(self):
+        return os.path.join(env.supervisor.binary_path, "supervisorctl")

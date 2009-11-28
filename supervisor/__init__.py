@@ -1,6 +1,8 @@
 
 from pluto import *
 
+from supervisor.resources import SupervisorService
+
 def supervisor_config(name, content):
     return File("supervisor-%s" % name,
         content = content,
@@ -8,4 +10,4 @@ def supervisor_config(name, content):
         group = "root",
         mode = 0644,
         path = "%s/supervisor.d/%s" % (env.supervisor.config_path, name),
-        notifies = [("reload", env.resources["Service"]["supervisor"])])
+        notifies = [("restart", env.resources["Service"]["supervisor"])])
