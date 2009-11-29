@@ -15,7 +15,7 @@ attributes:
     postgresql.listen_addresses:
         display_name: PostgreSQL listen addresses
         description: IP addresses PostgreSQL should listen on (* for all interfaces)
-        default: [127.0.0.1]
+        default: [localhost]
     postgresql.port:
         display_name: PostgreSQL port
         description: Port PostgreSQL should bind to

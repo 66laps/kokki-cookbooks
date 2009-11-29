@@ -1,8 +1,10 @@
 
+__all__ = ["MonitService"]
+
 from pluto import *
 
 class MonitService(Service):
-    provider = "monit.providers.MonitServiceProvider"
+    provider = "pluto.cookbooks.monit.MonitServiceProvider"
 
     supports_restart = BooleanArgument(default=True)
     supports_status = BooleanArgument(default=True)

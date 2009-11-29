@@ -1,4 +1,6 @@
 
+from pluto import *
+
 PLATFORM_CONFIGS = dict(
     centos = "httpd",
     redhat = "httpd",
@@ -116,10 +118,8 @@ File("apache2-default-000",
     path = "%s/sites-enabled/000-default" % env['apache']['dir'],
     action = "delete")
 
-from apache2 import apache2_module
- 
-apache2_module("status", conf=True)
-apache2_module("alias", conf=False)
+cookbook.apache2.apache2_module("status", conf=True)
+cookbook.apache2.apache2_module("alias", conf=False)
 
 # include_recipe "apache2::mod_status"
 # include_recipe "apache2::mod_alias"

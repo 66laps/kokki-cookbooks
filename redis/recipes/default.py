@@ -1,6 +1,6 @@
 
 import os
-from monit import monitrc
+from pluto import *
 
 include_recipe("monit")
 
@@ -32,5 +32,5 @@ File("redis.conf",
     group = "root",
     mode = 0644,
     content = Template("redis/redis.conf.j2"))
-monitrc("redis",
+cookbooks.monit.monitrc("redis",
     content = Template("redis/monit.conf.j2"))

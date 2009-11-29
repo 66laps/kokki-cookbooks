@@ -1,5 +1,5 @@
 
-from monit import monitrc, MonitService
+from pluto import *
 
 include_recipe("monit")
 
@@ -13,8 +13,8 @@ File("supervisord.conf",
 Directory("supervisor.d",
     path = "%s/supervisor.d" % env.supervisor.config_path)
 
-monitrc("supervisord",
+cookbook.monit.monitrc("supervisord",
     content = Template("supervisor/monit.conf.j2"))
 
-MonitService("supervisord",
+cookbooks.monit.MonitService("supervisord",
     subscribes = [("restart", env.resources["File"]["supervisord.conf"])])

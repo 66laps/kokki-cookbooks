@@ -1,5 +1,5 @@
 
-__all__ = ["MuninServiceProvider"]
+__all__ = ["MonitServiceProvider"]
 
 import subprocess
 from pluto import *

@@ -1,4 +1,6 @@
 
+from pluto import *
+
 if env.system.platform in ("ubuntu", "debian"):
     Package("postgresql-client")
 elif env.system.platform in ("redhat", "centos", "fedora"):

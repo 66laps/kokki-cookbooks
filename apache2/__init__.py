@@ -34,3 +34,24 @@ def apache2_site(name, enable=True):
             command = "/usr/sbin/a2dissite %s" % name,
             notifies = [("restart", env.resources["Service"]["apache2"])],
             only_if = lambda:os.path.exists("%s/sites-enabled/%s" % (env['apache']['dir'], name)))
+
+def setup():
+    # Where the various parts of apache are
+    if env.system.platform in ('redhat', 'centos', 'fedora', 'suse'):
+        env.set_attributes({
+                "apache.dir":     "/etc/httpd",
+                "apache.log_dir": "/var/log/httpd",
+                "apache.user":    "apache",
+                "apache.binary":  "/usr/sbin/httpd",
+                "apache.icondir": "/var/www/icons/",
+            })
+    else: # env.system.platform in ("debian", "ubuntu"):
+        env.set_attributes({
+                "apache.dir":     "/etc/apache2",
+                "apache.log_dir": "/var/log/apache2",
+                "apache.user":    "www-data",
+                "apache.binary":  "/usr/sbin/apache2",
+                "apache.icondir": "/usr/share/apache2/icons",
+            })
+
+setup()

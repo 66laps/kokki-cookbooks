@@ -1,7 +1,7 @@
 
-include_recipe("monit")
+from pluto import *
 
-from monit import monitrc
+include_recipe("monit")
 
 def install_package(name, url, creates):
     import os
@@ -31,5 +31,5 @@ Package("libevent-dev")
 Directory("/var/run/gearmand",
     owner = "nobody",
     mode = 0755)
-monitrc("gearmand",
+cookbooks.monit.monitrc("gearmand",
     content = Template("gearmand/monit.conf.j2"))

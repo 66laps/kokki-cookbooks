@@ -1,7 +1,7 @@
 
 from pluto import *
-
-from supervisor.resources import SupervisorService
+from pluto.cookbooks.supervisor.providers import SupervisorServiceProvider
+from pluto.cookbooks.supervisor.resources import SupervisorService
 
 def supervisor_config(name, content):
     return File("supervisor-%s" % name,
