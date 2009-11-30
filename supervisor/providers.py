@@ -1,6 +1,7 @@
 
 __all__ = ["SupervisorServiceProvider"]
 
+import os
 import re
 import subprocess
 from pluto import *

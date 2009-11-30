@@ -23,11 +23,11 @@ def install_package(name, url, creates):
             "./configure && make install\n") % dict(url=url, dirname=dirname, filename=filename)
     )
 
+Package("libevent-dev")
 install_package("gearmand",
     creates = "/usr/local/sbin/gearmand",
     url = "http://launchpad.net/gearmand/trunk/0.10/+download/gearmand-0.10.tar.gz")
 
-Package("libevent-dev")
 Directory("/var/run/gearmand",
     owner = "nobody",
     mode = 0755)
