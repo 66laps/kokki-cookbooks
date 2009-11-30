@@ -23,6 +23,7 @@ def install_package(name, url, creates):
             "./configure && make install\n") % dict(url=url, dirname=dirname, filename=filename)
     )
 
+Package("uuid-dev")
 Package("libevent-dev")
 install_package("gearmand",
     creates = "/usr/local/sbin/gearmand",
