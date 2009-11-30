@@ -20,7 +20,8 @@ def install_package(name, url, creates):
             "wget %(url)s\n"
             "tar -zxvf %(filename)s\n"
             "cd %(dirname)s\n"
-            "./configure && make install\n") % dict(url=url, dirname=dirname, filename=filename)
+            "./configure && make install\n"
+            "ldconfig\n") % dict(url=url, dirname=dirname, filename=filename)
     )
 
 Package("uuid-dev")
