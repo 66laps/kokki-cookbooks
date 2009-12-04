@@ -6,14 +6,7 @@ Package("libmemcache-dev", action="upgrade")
 Service("memcached")
 
 File("/etc/memcached.conf",
-    content = Template(
-        "memcached/memcached.conf.j2",
-        variables = dict(
-            memory = env['memcached']['memory'],
-            user = env['memcached']['user'],
-            port = env['memcached']['port'],
-            ipaddress = env.get('ipaddress', '127.0.0.1'),
-        )),
+    content = Template("memcached/memcached.conf.j2"),
     owner = "root",
     group = "root",
     mode = 0644,

@@ -118,9 +118,9 @@ File("apache2-default-000",
     path = "%s/sites-enabled/000-default" % env['apache']['dir'],
     action = "delete")
 
-cookbook.apache2.apache2_module("status", conf=True)
 cookbook.apache2.apache2_module("alias", conf=False)
 
+# cookbook.apache2.apache2_module("status", conf=True)
 # include_recipe "apache2::mod_status"
 # include_recipe "apache2::mod_alias"
 # include_recipe "apache2::mod_auth_basic"
