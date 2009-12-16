@@ -21,10 +21,22 @@ attributes:
         display_name: Nginx event model
         description: Which event model nginx should use (e.g. epoll)
         default:
+    "nginx.sendfile":
+        display_name: Nginx Sendfile
+        description: Wether sendfile should be used to serve files
+        default: true
+    "nginx.tcp_nopush":
+        display_name: Nginx tcp_nopush
+        description: Wether to enable/disable tcp_nopush
+        default: true
+    "nginx.tcp_nodelay":
+        display_name: Nginx tcp_nodelay
+        description: Wether to enable/disable tcp_nodelay
+        default: false
     "nginx.gzip":
         display_name: Nginx Gzip
         description: Whether gzip is enabled
-        default: "on"
+        default: true
     "nginx.gzip_http_version":
         display_name: Nginx Gzip HTTP Version
         description: Version of HTTP Gzip
@@ -42,7 +54,6 @@ attributes:
         description: "Supported MIME-types for gzip"
         default:
             - text/plain
-            - text/html
             - text/css
             - application/x-javascript
             - text/xml

@@ -16,7 +16,7 @@ File("pg_hba.conf",
     group = "postgres",
     mode = 0600,
     path = os.path.join(env.postgresql.config_dir, "pg_hba.conf"),
-    content = Template("postgresql/pg_hba-8.3.conf.j2"),
+    content = Template("postgresql83/pg_hba.conf.j2"),
     notifies = [("reload", env.resources["Service"]["postgresql"])])
 
 File("postgresql.conf",
@@ -24,5 +24,5 @@ File("postgresql.conf",
     group = "postgres",
     mode = 0600,
     path = os.path.join(env.postgresql.config_dir, "postgresql.conf"),
-    content = Template("postgresql/postgresql-8.3.conf.j2"),
+    content = Template("postgresql83/postgresql.conf.j2"),
     notifies = [("restart", env.resources["Service"]["postgresql"])])

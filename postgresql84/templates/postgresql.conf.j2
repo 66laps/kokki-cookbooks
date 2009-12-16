@@ -38,15 +38,15 @@
 # The default values of these variables are driven from the -D command-line
 # option or PGDATA environment variable, represented here as ConfigDir.
 
-data_directory = '{{ env.postgresql.data_dir }}'		# use data in another directory
+data_directory = '{{ env.postgresql84.data_dir }}'		# use data in another directory
 					# (change requires restart)
-hba_file = '{{ env.postgresql.config_dir }}/pg_hba.conf'	# host-based authentication file
+hba_file = '{{ env.postgresql84.config_dir }}/pg_hba.conf'	# host-based authentication file
 					# (change requires restart)
-ident_file = '{{ env.postgresql.config_dir }}/pg_ident.conf'	# ident configuration file
+ident_file = '{{ env.postgresql84.config_dir }}/pg_ident.conf'	# ident configuration file
 					# (change requires restart)
 
 # If external_pid_file is not explicitly set, no extra PID file is written.
-external_pid_file = '{{ env.postgresql.pidfile }}'		# write an extra PID file
+external_pid_file = '{{ env.postgresql84.config_dir }}/pg_hba.conf'		# write an extra PID file
 					# (change requires restart)
 
 
@@ -103,7 +103,7 @@ ssl = true				# (change requires restart)
 
 # - Memory -
 
-shared_buffers = 24MB			# min 128kB
+shared_buffers = 28MB			# min 128kB
 					# (change requires restart)
 #temp_buffers = 8MB			# min 800kB
 #max_prepared_transactions = 0		# zero disables the feature
@@ -280,7 +280,7 @@ shared_buffers = 24MB			# min 128kB
 					#   debug1
 					#   log
 					#   notice
-						#   warning
+					#   warning
 					#   error
 
 #log_min_messages = warning		# values in order of decreasing detail:
@@ -445,11 +445,11 @@ datestyle = 'iso, mdy'
 					# encoding
 
 # These settings are initialized by initdb, but they can be changed.
-lc_messages = 'C'			# locale for system error message
+lc_messages = 'en_US.UTF-8'			# locale for system error message
 					# strings
-lc_monetary = 'C'			# locale for monetary formatting
-lc_numeric = 'C'			# locale for number formatting
-lc_time = 'C'				# locale for time formatting
+lc_monetary = 'en_US.UTF-8'			# locale for monetary formatting
+lc_numeric = 'en_US.UTF-8'			# locale for number formatting
+lc_time = 'en_US.UTF-8'				# locale for time formatting
 
 # default configuration for text search
 default_text_search_config = 'pg_catalog.english'

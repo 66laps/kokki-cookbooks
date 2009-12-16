@@ -5,7 +5,7 @@ error_log  {{ env['nginx']['log_dir'] }}/error.log;
 pid        /var/run/nginx.pid;
  
 events {
-	worker_connections  {{ env['nginx']['worker_connections'] }};
+	worker_connections {{ env['nginx']['worker_connections'] }};
 	{% if env['nginx']['event_model'] %}use {{ env['nginx']['event_model'] }};{% endif %}
 }
  
@@ -15,20 +15,22 @@ http {
 
 	access_log	{{ env['nginx']['log_dir'] }}/access.log;
 
-	sendfile on;
-	tcp_nopush on;
-	tcp_nodelay on;
+	sendfile {% if env.nginx.sendfile %}on{% else %}off{% endif %};
+	tcp_nopush {% if env.nginx.tcp_nopush %}on{% else %}off{% endif %};
+	tcp_nodelay {% if env.nginx.tcp_nodelay %}on{% else %}off{% endif %};
 
 	{% if env['nginx']['keepalive'] == "on" %}
 	keepalive_timeout  {{ env['nginx']['keepalive_timeout'] }};
 	{% endif %}
  
-	gzip  {{ env['nginx']['gzip'] }};
-	{% if env['nginx']['gzip'] == "on" %}
-		gzip_http_version {{ env['nginx']['gzip_http_version'] }};
-		gzip_comp_level {{ env['nginx']['gzip_comp_level'] }};
-		gzip_proxied {{ env['nginx']['gzip_proxied'] }};
-		gzip_types {{ " ".join(env['nginx']['gzip_types']) }};
+	{% if env.nginx.gzip %}
+        gzip on;
+        gzip_http_version {{ env['nginx']['gzip_http_version'] }};
+        gzip_comp_level {{ env['nginx']['gzip_comp_level'] }};
+        gzip_proxied {{ env['nginx']['gzip_proxied'] }};
+        gzip_types {{ " ".join(env['nginx']['gzip_types']) }};
+	{% else %}
+        gzip off;
 	{% endif %}
  
 	{% if env['nginx']['server_names_hash_max_size'] %}server_names_hash_max_size {{ env['nginx']['server_names_hash_max_size'] }};{% endif %}
