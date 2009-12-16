@@ -46,7 +46,7 @@ ident_file = '{{ env.postgresql84.config_dir }}/pg_ident.conf'	# ident configura
 					# (change requires restart)
 
 # If external_pid_file is not explicitly set, no extra PID file is written.
-external_pid_file = '{{ env.postgresql84.config_dir }}/pg_hba.conf'		# write an extra PID file
+external_pid_file = '{{ env.postgresql84.pidfile }}'		# write an extra PID file
 					# (change requires restart)
 
 
