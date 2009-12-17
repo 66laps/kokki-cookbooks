@@ -1,0 +1,10 @@
+description: Resources and providers to support Amazon's Web Services (EC2, S3, etc..)
+attributes:
+    "aws.access_key_id":
+        display_name: AWS Access Key ID
+        description: API Key for AWS
+        default:
+    "aws.secret_access_key":
+        display_name: AWS Secret Access Key
+        description: Secret key for AWS
+        default:

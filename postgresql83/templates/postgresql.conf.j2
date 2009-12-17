@@ -35,15 +35,15 @@
 # The default values of these variables are driven from the -D command-line
 # option or PGDATA environment variable, represented here as ConfigDir.
 
-data_directory = '{{ env.postgresql.data_dir }}'		# use data in another directory
+data_directory = '{{ env.postgresql83.data_dir }}'		# use data in another directory
 					# (change requires restart)
-hba_file = '{{ env.postgresql.config_dir }}/pg_hba.conf'	# host-based authentication file
+hba_file = '{{ env.postgresql83.config_dir }}/pg_hba.conf'	# host-based authentication file
 					# (change requires restart)
-ident_file = '{{ env.postgresql.config_dir }}/pg_ident.conf'	# ident configuration file
+ident_file = '{{ env.postgresql83.config_dir }}/pg_ident.conf'	# ident configuration file
 					# (change requires restart)
 
 # If external_pid_file is not explicitly set, no extra PID file is written.
-external_pid_file = '{{ env.postgresql.pidfile }}'		# write an extra PID file
+external_pid_file = '{{ env.postgresql83.pidfile }}'		# write an extra PID file
 					# (change requires restart)
 
 
@@ -53,12 +53,12 @@ external_pid_file = '{{ env.postgresql.pidfile }}'		# write an extra PID file
 
 # - Connection Settings -
 
-listen_addresses = '{{ env.postgresql.listen_addresses|join(",") }}'		# what IP address(es) to listen on;
+listen_addresses = '{{ env.postgresql83.listen_addresses|join(",") }}'		# what IP address(es) to listen on;
 					# comma-separated list of addresses;
 					# defaults to 'localhost', '*' = all
 					# (change requires restart)
-port = {{ env.postgresql.port }}				# (change requires restart)
-max_connections = {{ env.postgresql.max_connections }}			# (change requires restart)
+port = {{ env.postgresql83.port }}				# (change requires restart)
+max_connections = {{ env.postgresql83.max_connections }}			# (change requires restart)
 # Note:  Increasing max_connections costs ~400 bytes of shared memory per 
 # connection slot, plus lock space (see max_locks_per_transaction).  You might
 # also need to raise shared_buffers to support more connections.

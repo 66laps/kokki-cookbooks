@@ -56,12 +56,12 @@ external_pid_file = '{{ env.postgresql84.pidfile }}'		# write an extra PID file
 
 # - Connection Settings -
 
-listen_addresses = '{{ env.postgresql.listen_addresses|join(",") }}'		# what IP address(es) to listen on;
+listen_addresses = '{{ env.postgresql84.listen_addresses|join(",") }}'		# what IP address(es) to listen on;
 					# comma-separated list of addresses;
 					# defaults to 'localhost', '*' = all
 					# (change requires restart)
-port = {{ env.postgresql.port }}				# (change requires restart)
-max_connections = {{ env.postgresql.max_connections }}			# (change requires restart)
+port = {{ env.postgresql84.port }}				# (change requires restart)
+max_connections = {{ env.postgresql84.max_connections }}			# (change requires restart)
 # Note:  Increasing max_connections costs ~400 bytes of shared memory per 
 # connection slot, plus lock space (see max_locks_per_transaction).
 #superuser_reserved_connections = 3	# (change requires restart)
