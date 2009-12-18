@@ -11,7 +11,7 @@ def install_package(name, url, creates):
         dirname = dirname.rsplit('.', 1)[0]
 
     if not dirname:
-        raise Fail("Enable to figure out directory name of project for URL %s" % url)
+        raise Fail("Unable to figure out directory name of project for URL %s" % url)
 
     Script("install-%s" % name,
         not_if = lambda:os.path.exists(creates),

@@ -1,4 +1,5 @@
 
+import os
 import time
 from pluto import *
 
@@ -7,7 +8,6 @@ class EBSVolumeProvider(Provider):
         if not self.resource.volume_id:
             raise Fail("Cannot create a volume with a speciic id (EC2 chooses volume ids)")
 
-
         nvid = self._volume_id_in_node_data()
         if nvid:
             # volume id is registered in the node data, so check that the volume in fact exists in EC2
@@ -15,7 +15,9 @@ class EBSVolumeProvider(Provider):
             exists = vol and vol.status != "deleting"
             # TODO: determine whether this should be an error or just cause a new volume to be created. Currently erring on the side of failing loudly
             if not exists:
-                raise Fail("Volume with id #{nvid} is registered with the node but does not exist in EC2. To clear this error, remove the ['aws']['ebs_volume']['#{self.resource.name}']['volume_id'] entry from this node's data.")
+                raise Fail(
+                    ("Volume with id %s is registered with the node but does not exist in EC2."
+                     " To clear this error, remove the ['aws']['ebs_volume']['#{self.resource.name}']['volume_id'] entry from this node's data.") % (nvid,))
         else:
             # Determine if there is a volume that meets the resource's specifications and is attached to the current
             # instance in case a previous [:create, :attach] run created and attached a volume but for some reason was
@@ -130,30 +132,39 @@ class EBSVolumeProvider(Provider):
     #   end
     #  
     #   nv[:aws_id]
-    # end
  
     def _attach_volume(self, volume_id, instance_id, device, timeout):
         """Attaches the volume and blocks until done (or times out)"""
         self.log.info("Attaching %s as %s" % (volume_id, device))
         self.ec2.attach_volume(volume_id, instance_id, device)
 
-        # block until attached
         start_time = time.time()
         end_time = start_time + timeout if timeout else 0
+        attached = False
+
+        # block until attached
         while (not timeout) or (time.time() < end_time):
             vol = self._volume_by_id(volume_id)
             if vol and vol.status != "deleting":
                 if vol.attachment_state() == "attached":
                     if vol.attach_data.instance_id == instance_id:
-                        self.log.debug("Volume is attached")
-                        return
+                        self.log.info("%s Volume is attached" % self)
+                        attached = True
+                        break
                     else:
                         raise Fail("Volume is attached to instance %s instead of %s" % (vol.attach_data.instance_id, instance_id))
                 else:
                     self.log.debug("Volume is %s" % vol.status)
             else:
-                raise Fail("Volume %s no longer exists" % volume_id)
+                raise Fail("%s Volume %s no longer exists" % (self, volume_id))
             time.sleep(3)
+
+        # block until device is available
+        if attached:
+            while (not timeout) or (time.time() < end_time):
+                if os.path.exists(self.resource.device):
+                    return
+                time.sleep(1)
 
         raise Fail("Timed out waiting for volume attachment after %s seconds" % (time.time() - start_time))
 
