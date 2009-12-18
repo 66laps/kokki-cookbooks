@@ -2,14 +2,16 @@
 import os
 from pluto import *
 
-Package("postgresql",
-    package_name = "postgresql-8.4")
-
 Service("postgresql",
     service_name = "postgresql-8.4",
     supports_restart = True,
     supports_reload = True,
-    supports_status = True)
+    supports_status = True,
+    action = "nothing")
+
+Package("postgresql",
+    package_name = "postgresql-8.4",
+    notifies = [("stop", env.resources["Service"]["postgresql"], True)])
 
 File("pg_hba.conf",
     owner = "postgres",

@@ -79,9 +79,6 @@ local   all         postgres                          ident
 # TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
 
 # "local" is for Unix domain socket connections only
-# local   all         all                               ident
-local   all         all                               md5
-# IPv4 local connections:
-host    all         all         127.0.0.1/32          md5
-# IPv6 local connections:
-host    all         all         ::1/128               md5
+{% for auth in env.postgresql84.auth %}
+{{ auth.type }} {{ auth.database }} {{ auth.user }} {% if auth.cidr %}{{ auth.cidr }}{% endif %} {{ auth.method }}
+{% endfor %}
