@@ -25,7 +25,7 @@ for vol in env.aws.volumes:
         action = "attach")
 
     if vol.get('fstype'):
-        Execute("mkfs.%(fstype)s %(device)s" % vol)
+        Execute("mkfs.%(fstype)s %(device)s" % vol,
             not_if = """if [ "`file -s %(device)s`" = "%(device)s: data" ]; then exit 1; fi""" % vol)
 
     if vol.get('mount_point'):
