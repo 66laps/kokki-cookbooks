@@ -12,7 +12,7 @@ def setup():
             postgresql_locale = l
             break
     env.set_attributes({
-        'postgresql84.locale': postgresql84.locale,
+        'postgresql84.locale': postgresql_locale,
     })
 
 setup()
