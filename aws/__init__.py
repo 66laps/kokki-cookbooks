@@ -11,6 +11,8 @@ def get_ec2_metadata(key):
 def setup():
     env.set_attributes({
         'aws.instance_id': get_ec2_metadata('instance-id'),
+        'aws.instance_type': get_ec2_metadata('instance-type'),
+        'aws.availability_zone': get_ec2_metadata('placement/availability-zone'),
     }, overwrite=True)
 
 setup()

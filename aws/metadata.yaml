@@ -8,3 +8,7 @@ attributes:
         display_name: AWS Secret Access Key
         description: Secret key for AWS
         default:
+    "aws.volumes":
+        display_name: AWS Volumes
+        description: Volumes to attach and mount to the current instance (volume_id, device, fstype, fsoptions, mount_point)
+        default: []
