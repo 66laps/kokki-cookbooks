@@ -313,7 +313,7 @@ shared_buffers = 24MB			# min 128kB
 					#   fatal
 					#   panic (effectively off)
 
-#log_min_duration_statement = -1	# -1 is disabled, 0 logs all statements
+log_min_duration_statement = {{ env.postgresql84.log_min_duration_statement }}	# -1 is disabled, 0 logs all statements
 					# and their durations, > 0 logs only
 					# statements running at least this number
 					# of milliseconds
