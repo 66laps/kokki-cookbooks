@@ -14,7 +14,7 @@ http {
 	default_type  application/octet-stream;
 
     {% if env.nginx.log_format %}
-    log_format custom {{ repr(env.nginx.log_format) }}; 
+    log_format custom {{ repr(env.nginx.log_format.strip()) }}; 
     access_log {{ env.nginx.log_dir }}/access.log custom;
     {% else %}
 	access_log {{ env.nginx.log_dir }}/access.log;
