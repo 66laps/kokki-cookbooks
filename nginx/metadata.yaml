@@ -9,6 +9,10 @@ attributes:
         display_name: Nginx Log Directory
         description: Location for nginx logs
         default: "/var/log/nginx"
+    "nginx.log_format":
+        display_name: Nginx Access Log Format
+        description: Format string for the access log. If not set them the default for nginx is used.
+        default:
     "nginx.user":
         display_name: Nginx User
         description: User nginx will run as
