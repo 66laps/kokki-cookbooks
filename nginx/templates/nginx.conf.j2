@@ -1,7 +1,7 @@
 user {{ env.nginx.user }};
 worker_processes  {{ env.nginx['worker_processes'] }};
  
-error_log  {{ env.nginx.log_dir. }}/error.log;
+error_log  {{ env.nginx.log_dir }}/error.log;
 pid        /var/run/nginx.pid;
  
 events {
