@@ -95,8 +95,55 @@ class SSHKnownHostsFile(object):
                 out.append("|1|%s|%s %s %s" % (b64encode(h[1]), b64encode(h[2]), h[3], h[4]))
         for k, host in unhashed.items():
             out.append("%s %s %s" % (",".join(host), k[0], k[1]))
-        out.append("\n")
+        out.append("")
         return "\n".join(out)
+
+class SSHAuthorizedKeysFile(object):
+    def __init__(self, path=None):
+        self.keys = {}
+        if path:
+            self.parse(path)
+
+    def parse(self, path):
+        self.keys = {}
+        with open(path, "r") as fp:
+            for line in fp:
+                line = line.strip()
+                if not line:
+                    continue
+
+                keytype, key, name = line.split(' ')
+                self.keys[(keytype, key)] = name
+
+    def save(self, path):
+        with open(path, "w") as fp:
+            fp.write(str(self))
+
+    def includes(self, keytype, key):
+        return (keytype, key) in self.keys
+
+    def add_key(self, keytype, key, name, verify=True):
+        if verify and self.includes(keytype, key):
+            return False
+
+        self.keys[(keytype, key)] = name
+        return True
+
+    def remove_key(self, keytype, key):
+        try:
+            self.keys.pop((keytype, key))
+        except KeyError:
+            return False
+        return True
+
+    def __str__(self):
+        out = []
+        for k, name in self.keys.items():
+            keytype, key = k
+            out.append(" ".join((keytype, key, name)))
+        out.append("")
+        return "\n".join(out)
+
 def ssh_path_for_user(user):
     if env.system.platform == "linux":
         if user == "root":
