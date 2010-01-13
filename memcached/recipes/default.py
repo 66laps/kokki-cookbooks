@@ -1,5 +1,5 @@
 
-from pluto import *
+from kokki import *
 
 Package("memcached", action="upgrade")
 Package("libmemcache-dev", action="upgrade")

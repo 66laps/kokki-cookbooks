@@ -1,6 +1,6 @@
 
 import os
-from pluto import *
+from kokki import *
 
 Package("postgresql",
     package_name = "postgresql-8.3")

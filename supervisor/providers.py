@@ -4,7 +4,7 @@ __all__ = ["SupervisorServiceProvider"]
 import os
 import re
 import subprocess
-from pluto import *
+from kokki import *
 
 whitespace_re = re.compile(r'\s+')
 

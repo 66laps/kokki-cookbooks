@@ -1,5 +1,5 @@
 
-from pluto import *
+from kokki import *
 
 def nginx_site(name, enable=True):
     import os

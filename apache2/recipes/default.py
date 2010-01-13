@@ -1,5 +1,5 @@
 
-from pluto import *
+from kokki import *
 
 PLATFORM_CONFIGS = dict(
     centos = "httpd",

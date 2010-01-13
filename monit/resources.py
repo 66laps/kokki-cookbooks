@@ -1,10 +1,10 @@
 
 __all__ = ["MonitService"]
 
-from pluto import *
+from kokki import *
 
 class MonitService(Service):
-    provider = "pluto.cookbooks.monit.MonitServiceProvider"
+    provider = "kokki.cookbooks.monit.MonitServiceProvider"
 
     supports_restart = BooleanArgument(default=True)
     supports_status = BooleanArgument(default=True)

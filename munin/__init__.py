@@ -1,5 +1,5 @@
 
-from pluto import *
+from kokki import *
 
 
 # def munin_plugin(name, install=True):

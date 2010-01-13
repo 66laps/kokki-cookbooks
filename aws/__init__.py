@@ -1,3 +1,3 @@
 
-from pluto.cookbooks.aws.providers import EBSVolumeProvider
-from pluto.cookbooks.aws.resources import EBSVolume
+from kokki.cookbooks.aws.providers import EBSVolumeProvider
+from kokki.cookbooks.aws.resources import EBSVolume

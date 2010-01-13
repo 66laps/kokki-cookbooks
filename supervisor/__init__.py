@@ -1,7 +1,7 @@
 
-from pluto import *
-from pluto.cookbooks.supervisor.providers import SupervisorServiceProvider
-from pluto.cookbooks.supervisor.resources import SupervisorService
+from kokki import *
+from kokki.cookbooks.supervisor.providers import SupervisorServiceProvider
+from kokki.cookbooks.supervisor.resources import SupervisorService
 
 def supervisor_config(name, content):
     return File("supervisor-%s" % name,

@@ -1,5 +1,5 @@
 
-from pluto import *
+from kokki import *
 
 Package("postgresql-server-dev",
     package_name = "postgresql-server-dev-8.4")

@@ -1,7 +1,7 @@
 
 import os
 import time
-from pluto import *
+from kokki import *
 
 class EBSVolumeProvider(Provider):
     def action_create(self):

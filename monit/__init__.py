@@ -1,7 +1,7 @@
 
-from pluto import *
-from pluto.cookbooks.monit.providers import *
-from pluto.cookbooks.monit.resources import *
+from kokki import *
+from kokki.cookbooks.monit.providers import *
+from kokki.cookbooks.monit.resources import *
 
 def monitrc(name, content):
     return File("monitrc-%s" % name,

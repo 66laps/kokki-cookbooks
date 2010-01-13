@@ -1,6 +1,6 @@
 
 import urllib2
-from pluto import *
+from kokki import *
 
 def get_ec2_metadata(key):
     res = urllib2.urlopen("http://169.254.169.254/2008-02-01/meta-data/" + key)

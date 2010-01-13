@@ -1,10 +1,10 @@
 
-from pluto import *
+from kokki import *
 
 include_recipe("monit")
 
 Package("supervisor",
-    provider = "pluto.providers.package.easy_install.EasyInstallProvider")
+    provider = "kokki.providers.package.easy_install.EasyInstallProvider")
 
 File("supervisord.conf",
     path = "%s/supervisord.conf" % env.supervisor.config_path,

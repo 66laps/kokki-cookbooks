@@ -1,6 +1,6 @@
 
 import os
-from pluto import *
+from kokki import *
 
 Service("postgresql",
     service_name = "postgresql-8.4",

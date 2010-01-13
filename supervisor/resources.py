@@ -1,10 +1,10 @@
 
 __all__ = ["SupervisorService"]
 
-from pluto import *
+from kokki import *
 
 class SupervisorService(Service):
-    provider = "pluto.cookbooks.supervisor.SupervisorServiceProvider"
+    provider = "kokki.cookbooks.supervisor.SupervisorServiceProvider"
 
     supports_restart = BooleanArgument(default=True)
     supports_status = BooleanArgument(default=True)

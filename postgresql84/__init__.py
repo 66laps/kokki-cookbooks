@@ -1,6 +1,6 @@
 
 from subprocess import Popen, STDOUT, PIPE
-from pluto import *
+from kokki import *
 
 def setup():
     postgresql_locale = env.system.locales[0]

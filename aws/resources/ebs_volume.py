@@ -1,8 +1,8 @@
 
-from pluto import *
+from kokki import *
 
 class EBSVolume(Resource):
-    provider = "pluto.cookbooks.aws.EBSVolumeProvider"
+    provider = "kokki.cookbooks.aws.EBSVolumeProvider"
 
     actions = ["create", "attach", "detach", "snapshot"]
 

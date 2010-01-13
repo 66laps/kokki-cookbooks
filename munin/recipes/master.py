@@ -1,4 +1,4 @@
 
-from pluto import *
+from kokki import *
 
 Package("munin")

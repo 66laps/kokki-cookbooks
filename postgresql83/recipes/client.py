@@ -1,5 +1,5 @@
 
-from pluto import *
+from kokki import *
 
 if env.system.platform in ("ubuntu", "debian"):
     Package("postgresql-client")

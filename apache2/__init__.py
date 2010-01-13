@@ -1,6 +1,6 @@
 
 import os
-from pluto import *
+from kokki import *
 
 def apache2_conf(name):
     File("%s/mods-available/%s.conf" % (env['apache']['dir'], name),

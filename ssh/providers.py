@@ -4,8 +4,8 @@ __all__ = ["SSHKnownHostProvider", "SSHAuthorizedKeyProvider"]
 import os
 import re
 import subprocess
-from pluto import *
-from pluto.cookbooks.ssh.utils import SSHKnownHostsFile, SSHAuthorizedKeysFile
+from kokki import *
+from kokki.cookbooks.ssh.utils import SSHKnownHostsFile, SSHAuthorizedKeysFile
 
 class SSHKnownHostProvider(Provider):
     def action_include(self):

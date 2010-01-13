@@ -2,7 +2,7 @@
 import hashlib
 import hmac
 from base64 import b64decode, b64encode
-from pluto import Fail, env
+from kokki import Fail, env
 
 class SSHKnownHostsFile(object):
     def __init__(self, path=None):
