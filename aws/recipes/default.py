@@ -16,6 +16,8 @@ setup()
 
 Package("python-boto")
 
+# Mount volumes and format is necessary
+
 Package("xfsprogs")
 
 for vol in env.aws.volumes:
