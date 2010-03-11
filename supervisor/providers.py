@@ -23,6 +23,10 @@ class SupervisorServiceProvider(Provider):
         self._init_cmd("restart", 0)
         self.resource.updated()
 
+    def action_reload(self):
+        self._init_cmd("reload", 0)
+        self.resource.updated()
+
     def status(self):
         p = subprocess.Popen([self.supervisorctl_path, "status"],
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT)

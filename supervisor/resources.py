@@ -8,4 +8,4 @@ class SupervisorService(Service):
 
     supports_restart = BooleanArgument(default=True)
     supports_status = BooleanArgument(default=True)
-    supports_reload = BooleanArgument(default=False)
+    supports_reload = BooleanArgument(default=True)
