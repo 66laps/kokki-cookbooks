@@ -28,7 +28,7 @@ Package("uuid-dev")
 Package("libevent-dev")
 install_package("gearmand",
     creates = "/usr/local/sbin/gearmand",
-    url = "http://launchpad.net/gearmand/trunk/0.12/+download/gearmand-0.12.tar.gz")
+    url = "http://launchpad.net/gearmand/trunk/0.13/+download/gearmand-0.13.tar.gz")
 
 Directory("/var/run/gearmand",
     owner = "nobody",
