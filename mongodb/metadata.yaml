@@ -1,0 +1,10 @@
+description: Installs and configures mongodb
+attributes:
+    "mongodb.dbpath":
+        display_name: MongoDB database path
+        description: Path where to store the MongoDB database
+        default: /var/lib/mongodb
+    "mongodb.logpath"
+        display_name: MongoDB log path
+        description: Path where to store the MongoDB log
+        default: /var/log/mongodb/mongodb.log
