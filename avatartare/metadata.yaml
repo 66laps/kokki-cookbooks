@@ -20,3 +20,7 @@ attributes:
         display_name: Memcached Servers
         description: List of memcached servers to use
         default: ["localhost:11211"]
+    avatartare.process_count:
+        display_name: Process Count
+        description: Number of processes to run
+        default: 6

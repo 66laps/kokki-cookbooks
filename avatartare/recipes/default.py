@@ -30,5 +30,5 @@ File("avatartare-local_settings.py",
 
 # Setup Supervisor to start and monitor the processes
 File("%s/supervisor.d/avatartare" % env.supervisor.config_path,
-    content = Template("lefora/supervisor-avatartare.j2"),
+    content = Template("avatartare/supervisor.j2"),
     notifies = [("restart", env.resources["SupervisorService"]["avatartare"])])
