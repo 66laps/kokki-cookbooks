@@ -12,7 +12,7 @@ Package("python-pycurl")
 # Clone project
 Directory(os.path.dirname(env.avatartare.path), mode=0755)
 Execute("git clone git://github.com/samuel/avatartare.git %s" % env.avatartare.path,
-    creates = env.avatatare.path,
+    creates = env.avatartare.path,
 )
 
 # Bootstrap the environment
