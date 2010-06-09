@@ -26,6 +26,9 @@ if not os.path.exists(apt_list_path):
     with closing(open(apt_list_path, 'w')) as fp:
         fp.write(apt + "\n")
 
+    import subprocess
+    subprocess.call("apt-get update", shell=True)
+
 Package("mongodb-stable")
 
 Service("mongodb")
