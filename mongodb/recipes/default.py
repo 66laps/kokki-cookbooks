@@ -10,7 +10,7 @@ if not os.path.exists(apt_list_path):
     if env.system.platform == "ubuntu":
         ver = env.system.lsb['release']
         if ver == '10.04':
-            apt = 'deb http://downloads.mongodb.org/distros/ubuntu 10.4 10'
+            apt = 'deb http://downloads.mongodb.org/distros/ubuntu 10.4 10gen'
         elif ver == '9.10':
             apt = 'deb http://downloads.mongodb.org/distros/ubuntu 9.10 10gen'
         elif ver == '9.04':
