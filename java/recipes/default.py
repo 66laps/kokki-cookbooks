@@ -4,7 +4,8 @@ from kokki import *
 Package("debconf-utils")
 
 if env.system.lsb['codename'] == 'lucid':
-    Execute('add-apt-repository "deb http://archive.canonical.com/ lucid partner" ; apt-get update')
+    Execute('add-apt-repository "deb http://archive.canonical.com/ lucid partner" ; apt-get update',
+        not_if = "grep 'lucid partner' /etc/apt/sources.list > /dev/null")
 
 Script("accept-java-license",
     not_if = "debconf-show sun-java6-jre | grep accepted > /dev/null",
