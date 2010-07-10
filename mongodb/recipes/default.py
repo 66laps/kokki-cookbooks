@@ -32,6 +32,8 @@ if not os.path.exists(apt_list_path):
 
 Package("mongodb-stable")
 
+Directory(env.mongodb.dbpath)
+
 Service("mongodb")
 File("/etc/mongodb.conf",
     owner = "root",
