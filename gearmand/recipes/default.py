@@ -26,6 +26,7 @@ def install_package(name, url, creates):
 
 Package("uuid-dev")
 Package("libevent-dev")
+Package("g++")
 install_package("gearmand",
     creates = "/usr/local/sbin/gearmand",
     url = "http://launchpad.net/gearmand/trunk/0.13/+download/gearmand-0.13.tar.gz")
