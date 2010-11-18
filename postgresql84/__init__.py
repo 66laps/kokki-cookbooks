@@ -1,6 +1,7 @@
 
-from subprocess import Popen, STDOUT, PIPE
 from kokki import *
+from kokki.cookbooks.postgresql84.providers import PostgreSQLUserProvider, PostgreSQLDatabaseProvider
+from kokki.cookbooks.postgresql84.resources import PostgreSQLUser, PostgreSQLDatabase
 
 def setup():
     postgresql_locale = env.system.locales[0]
