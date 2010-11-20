@@ -1,0 +1,51 @@
+description: Installs and configures s3cmd (the command line S3 client)
+attributes:
+    s3cmd.user:
+        display_name: s3cmd user.
+        description: The user to install s3cmd for.
+        default: root
+
+    s3cmd.group:
+        display_name: s3cmd group.
+        description: The group of the s3cmd user.
+        default: root
+
+    s3cmd.aws.access_key:
+        display_name: AWS Access Key.
+        description: Your Amazon Web Services Access Key.
+        default:
+
+    s3cmd.aws.secret_key:
+        display_name: AWS Secret Key.
+        description: Your Amazon Web Services Secret Key.
+        default:
+
+    s3cmd.aws.bucket_location:
+        display_name: S3 bucket location.
+        description: The default location of a new S3 bucket.
+        default: US
+
+    s3cmd.aws.use_https:
+        display_name: Use HTTPS for S3 communication.
+        description: Whether to use HTTPS for S3 communication.
+        default: True
+
+    s3cmd.gpg.passphrase:
+        display_name: GnuPG Passphrase.
+        description: The GnuPG encryption/decryption passphrase.
+        default:
+
+    s3cmd.gpg.command:
+        display_name: GnuPG command.
+        description: The absolute path to the gpg executable.
+        default: /usr/bin/gpg
+
+    s3cmd.proxy_host:
+        display_name: Proxy server host.
+        description: A HTTP/HTTPS proxy server to use.
+        default: ''
+
+    s3cmd.proxy_port:
+        display_name: Proxy server port.
+        description: A HTTP/HTTPS proxy server port to use.
+        default: 0
